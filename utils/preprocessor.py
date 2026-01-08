@@ -1,5 +1,6 @@
 import numpy as np
-from scipy.misc import imread, imresize
+from PIL import Image
+import cv2
 
 
 def preprocess_input(x, v2=True):
@@ -11,10 +12,12 @@ def preprocess_input(x, v2=True):
     return x
 
 def _imread(image_name):
-        return imread(image_name)
+    """Load image using PIL instead of deprecated scipy.misc.imread"""
+    return np.array(Image.open(image_name))
 
 def _imresize(image_array, size):
-        return imresize(image_array, size)
+    """Resize image using cv2 instead of deprecated scipy.misc.imresize"""
+    return cv2.resize(image_array, size)
 
 def to_categorical(integer_classes, num_classes=2):
     integer_classes = np.asarray(integer_classes, dtype='int')

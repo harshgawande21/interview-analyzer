@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="glass-card p-5 text-center fade-in">
+            <h1 class="text-white mb-4">
+                <i class="fas fa-brain me-3"></i>Interview Analyzer
+            </h1>
+            <p class="text-white-custom mb-5 fs-5">
+                Advanced AI-powered interview analysis with real-time emotion detection
+            </p>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="mb-3">
+                            <i class="fas fa-building fa-3x text-white mb-3"></i>
+                        </div>
+                        <h3 class="text-white mb-3">Organization</h3>
+                        <p class="text-white-custom mb-4">
+                            Upload interview questions and analyze candidate responses with detailed emotion tracking
+                        </p>
+                        <a href="/organization" class="btn btn-glass btn-lg w-100">
+                            <i class="fas fa-upload me-2"></i>Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="glass-card p-4 h-100">
+                        <div class="mb-3">
+                            <i class="fas fa-user-tie fa-3x text-white mb-3"></i>
+                        </div>
+                        <h3 class="text-white mb-3">Candidate</h3>
+                        <p class="text-white-custom mb-4">
+                            Join an interview session and showcase your skills with our AI-powered assessment
+                        </p>
+                        <a href="/candidate" class="btn btn-glass btn-lg w-100">
+                            <i class="fas fa-play me-2"></i>Join Interview
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <i class="fas fa-video fa-2x text-white mb-2"></i>
+                        <h5 class="text-white">Real-time Video</h5>
+                        <p class="text-white-custom small">Live emotion detection during interviews</p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fas fa-chart-pie fa-2x text-white mb-2"></i>
+                        <h5 class="text-white">Analytics</h5>
+                        <p class="text-white-custom small">Comprehensive emotion analysis reports</p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fas fa-microphone fa-2x text-white mb-2"></i>
+                        <h5 class="text-white">Speech-to-Text</h5>
+                        <p class="text-white-custom small">Automatic answer transcription</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
