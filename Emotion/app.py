@@ -24,19 +24,21 @@ from utils.preprocessor import preprocess_input
 # Import configuration
 from config import get_config, EMOTION_CONFIG, INTERVIEW_CONFIG, WEBSOCKET_EVENTS
 
-# Initialize Flask app with configuration
-config_class = get_config()
-app = Flask(__name__)
-app.config.from_object(config_class)
-socketio = SocketIO(app, cors_allowed_origins="*")
+def create_app():
+    app = Flask(__name__, static_folder='static', template_folder='templates')
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
+    app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
+    
+    # Ensure upload folder exists
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    
+    # Initialize SocketIO
+    socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+    
+    return app, socketio
 
-# Validate configuration
-config_errors = config_class.validate_config()
-if config_errors:
-    print("Configuration errors found:")
-    for error in config_errors:
-        print(f"  - {error}")
-    print("Please fix these issues before running the application.")
+# Create app and socketio instances
+app, socketio = create_app()
 
 # Global variables for emotion detection
 emotion_model_path = str(config_class.EMOTION_MODEL_PATH)
