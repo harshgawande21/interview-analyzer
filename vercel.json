@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Emotion/api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "Emotion/api/index.py"
+    }
+  ],
+  "env": {
+    "FLASK_ENV": "production"
+  }
+}
